@@ -65,10 +65,8 @@ cartItems.innerHTML += `
 
 <h2>Total : ₹${total}</h2>
 
-<a href="#" class="checkout-btn">
-
+<a href="checkout.html" class="checkout-btn">
 Proceed to Checkout
-
 </a>
 
 </div>
