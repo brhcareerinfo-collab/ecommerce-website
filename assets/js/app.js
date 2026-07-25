@@ -1,37 +1,114 @@
-// ===== GaonFresh App =====
-let cart = 0;
+// ===============================
+// GaonFresh App
+// ===============================
 
-const buttons = document.querySelectorAll(".product-card button");
+// Product Data
+const products = [
+{
+name:"Premium Wheat",
+price:"₹45 / Kg",
+image:"assets/images/wheat.jpg"
+},
+{
+name:"Basmati Rice",
+price:"₹85 / Kg",
+image:"assets/images/rice.jpg"
+},
+{
+name:"Mustard Oil",
+price:"₹180 / Litre",
+image:"assets/images/oil.jpg"
+},
+{
+name:"Potato",
+price:"₹30 / Kg",
+image:"assets/images/potato.jpg"
+},
+{
+name:"Tomato",
+price:"₹40 / Kg",
+image:"assets/images/tomato.jpg"
+},
+{
+name:"Chana Dal",
+price:"₹95 / Kg",
+image:"assets/images/chana.jpg"
+}
+];
 
-buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-        cart++;
+// Show Products
+const productList = document.getElementById("product-list");
 
-        document.getElementById("cart-count").innerText = cart;
+products.forEach(product=>{
 
-        alert("✅ Product Added to Cart");
-    });
+productList.innerHTML += `
+<div class="product-card">
+<img src="${product.image}" alt="${product.name}">
+<h3>${product.name}</h3>
+<p>${product.price}</p>
+<button>Add to Cart</button>
+</div>
+`;
+
 });
 
-console.log("GaonFresh Started Successfully");
-// ===== Banner Slider =====
-
+// Banner Slider
 const banners = [
 "assets/images/banner1.jpg",
 "assets/images/banner2.jpg",
 "assets/images/banner3.jpg"
 ];
 
-let current = 0;
+let currentBanner = 0;
 
 setInterval(()=>{
 
-current++;
+currentBanner++;
 
-if(current>=banners.length){
-current=0;
+if(currentBanner>=banners.length){
+currentBanner=0;
 }
 
-document.getElementById("sliderImage").src=banners[current];
+document.getElementById("sliderImage").src=banners[currentBanner];
 
 },3000);
+
+// Cart
+let cart = 0;
+
+document.addEventListener("click",function(e){
+
+if(e.target.tagName==="BUTTON" && e.target.innerText==="Add to Cart"){
+
+cart++;
+
+document.getElementById("cart-count").innerText=cart;
+
+alert("✅ Product Added to Cart");
+
+}
+
+});
+
+// Search
+const searchInput=document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup",()=>{
+
+const value=searchInput.value.toLowerCase();
+
+document.querySelectorAll(".product-card").forEach(product=>{
+
+const name=product.querySelector("h3").innerText.toLowerCase();
+
+if(name.includes(value)){
+product.style.display="block";
+}else{
+product.style.display="none";
+}
+
+});
+
+});
+
+console.log("GaonFresh Loaded Successfully");
