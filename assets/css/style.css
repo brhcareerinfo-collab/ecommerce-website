@@ -1,1 +1,33 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
 
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px;
+background:#198754;
+color:white;
+}
+
+.logo{
+font-size:22px;
+font-weight:bold;
+}
+
+.search input{
+padding:8px;
+width:180px;
+border:none;
+border-radius:5px;
+}
+
+.menu a{
+color:white;
+text-decoration:none;
+margin-left:15px;
+}
