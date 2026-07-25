@@ -73,22 +73,42 @@ document.getElementById("sliderImage").src=banners[currentBanner];
 
 },3000);
 
-// Cart
-let cart = 0;
+// Add to Cart
 
-document.addEventListener("click",function(e){
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-if(e.target.tagName==="BUTTON" && e.target.innerText==="Add to Cart"){
+document.addEventListener("click", function(e){
 
-cart++;
+if(e.target.innerText==="Add to Cart"){
 
-document.getElementById("cart-count").innerText=cart;
+const card = e.target.closest(".product-card");
 
-alert("✅ Product Added to Cart");
+const product = {
+
+name: card.querySelector("h3").innerText,
+
+price: card.querySelector("p").innerText,
+
+image: card.querySelector("img").src,
+
+qty:1
+
+};
+
+cart.push(product);
+
+localStorage.setItem("cart", JSON.stringify(cart));
+
+document.getElementById("cart-count").innerText = cart.length;
+
+alert(product.name + " Cart में जोड़ दिया गया।");
 
 }
 
 });
+
+// Cart Count
+document.getElementById("cart-count").innerText = cart.length;
 
 // Search
 const searchInput=document.getElementById("searchInput");
