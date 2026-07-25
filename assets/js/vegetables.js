@@ -57,3 +57,16 @@ productList.innerHTML += `
 `;
 
 });
+let cart = 0;
+
+document.addEventListener("click", function(e){
+
+if(e.target.classList.contains("add-cart")){
+
+cart++;
+
+alert("✅ Product Cart में जोड़ दिया गया।");
+
+}
+
+});
