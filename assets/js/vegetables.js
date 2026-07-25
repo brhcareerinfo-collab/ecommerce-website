@@ -1,4 +1,4 @@
-const vegetables = [
+buttonnn vegetables = [
 
 {
 name:"Potato",
@@ -52,11 +52,7 @@ productList.innerHTML += `
 
 <p>${product.price}</p>
 
-<button>Add to Cart</button>
-
-<button class="buy-btn">Buy Now</button>
-
-</div>
+<button class="add-cart">Add to Cart</button>divdiv>
 
 `;
 
