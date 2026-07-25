@@ -119,13 +119,54 @@ margin-left:15px;
     padding:2px 7px;
     font-size:12px;
 }
-@media (max-width:768px){
+@media(max-width:768px){
 
-.top-bar{
-    font-size:16px;
-    padding:10px;
+.slider img{
+    height:180px;
+}
+.modal{
+display:none;
+position:fixed;
+left:0;
+top:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.6);
+z-index:9999;
 }
 
+.modal-content{
+background:#fff;
+width:90%;
+max-width:400px;
+margin:60px auto;
+padding:20px;
+border-radius:12px;
+text-align:center;
+}
+
+.modal-content img{
+width:100%;
+height:220px;
+object-fit:cover;
+border-radius:10px;
+}
+
+#closeModal{
+float:right;
+font-size:30px;
+cursor:pointer;
+}
+
+#buyNow{
+width:100%;
+padding:12px;
+background:#198754;
+color:#fff;
+border:none;
+border-radius:8px;
+font-size:18px;
+}
 }
 /* ===== Categories ===== */
 
