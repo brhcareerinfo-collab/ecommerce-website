@@ -102,3 +102,44 @@ margin-left:15px;
     border-radius:5px;
     cursor:pointer;
 }
+/* ===== Categories ===== */
+
+.categories{
+    padding:40px 15px;
+    background:#f8f8f8;
+}
+
+.categories h2{
+    text-align:center;
+    margin-bottom:25px;
+    font-size:28px;
+}
+
+.category-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+
+.category-card{
+    background:#ffffff;
+    border-radius:15px;
+    padding:20px;
+    text-align:center;
+    box-shadow:0 4px 12px rgba(0,0,0,.12);
+    transition:.3s;
+}
+
+.category-card:hover{
+    transform:translateY(-5px);
+}
+
+.icon{
+    font-size:45px;
+    margin-bottom:10px;
+}
+
+.category-card h3{
+    font-size:18px;
+    color:#198754;
+}
