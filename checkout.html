@@ -1,1 +1,87 @@
+<!DOCTYPE html>
+<html lang="hi">
 
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Checkout | GaonFresh</title>
+
+<link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+
+<body>
+
+<header class="header">
+
+<div class="logo">
+🌾 <strong>GaonFresh</strong>
+</div>
+
+<div class="menu">
+<a href="index.html">🏠 Home</a>
+<a href="cart.html">🛒 Cart</a>
+</div>
+
+</header>
+
+<section class="products">
+
+<h2>📦 Checkout</h2>
+
+<form id="checkoutForm">
+
+<input type="text" placeholder="पूरा नाम" required>
+
+<input type="tel" placeholder="मोबाइल नंबर" required>
+
+<textarea placeholder="पूरा पता" required></textarea>
+
+<input type="text" placeholder="शहर" required>
+
+<input type="text" placeholder="पिनकोड" required>
+
+<h3>Payment Method</h3>
+
+<label>
+<input type="radio" name="pay" checked>
+Cash on Delivery
+</label>
+
+<br><br>
+
+<label>
+<input type="radio" name="pay">
+UPI Payment
+</label>
+
+<br><br>
+
+<button type="submit" class="checkout-btn">
+
+Place Order
+
+</button>
+
+</form>
+
+</section>
+
+<script>
+
+document.getElementById("checkoutForm").onsubmit=function(e){
+
+e.preventDefault();
+
+alert("🎉 आपका ऑर्डर सफलतापूर्वक प्राप्त हो गया।");
+
+window.location="index.html";
+
+}
+
+</script>
+
+</body>
+
+</html>
