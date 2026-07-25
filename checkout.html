@@ -1,54 +1,54 @@
-document.getElementById("checkoutForm").addEventListener("submit", function(e){
+<script>
+
+document.getElementById("checkoutForm").addEventListener("submit",function(e){
 
 e.preventDefault();
 
-const name = document.querySelector('input[placeholder="पूरा नाम"]').value.trim();
-const mobile = document.querySelector('input[placeholder="मोबाइल नंबर"]').value.trim();
-const address = document.querySelector("textarea").value.trim();
-const city = document.querySelector('input[placeholder="शहर"]').value.trim();
-const pin = document.querySelector('input[placeholder="पिनकोड"]').value.trim();
+const name=document.querySelector('input[placeholder="पूरा नाम"]').value;
+const mobile=document.querySelector('input[placeholder="मोबाइल नंबर"]').value;
+const address=document.querySelector("textarea").value;
+const city=document.querySelector('input[placeholder="शहर"]').value;
+const pin=document.querySelector('input[placeholder="पिनकोड"]').value;
 
-if(name==="" || mobile==="" || address==="" || city==="" || pin===""){
-alert("कृपया सभी जानकारी भरें।");
-return;
-}
-
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let cart=JSON.parse(localStorage.getItem("cart"))||[];
 
 if(cart.length===0){
+
 alert("आपका Cart खाली है।");
+
 return;
+
 }
 
-let message = "🛒 *GaonFresh New Order*%0A%0A";
+let total=0;
 
-message += "👤 Name : " + name + "%0A";
-message += "📱 Mobile : " + mobile + "%0A";
-message += "📍 Address : " + address + ", " + city + " - " + pin + "%0A%0A";
+let message="🛒 *GaonFresh New Order*%0A%0A";
 
-message += "📦 Products:%0A";
+message+="👤 Name: "+name+"%0A";
+message+="📱 Mobile: "+mobile+"%0A";
+message+="📍 Address: "+address+", "+city+" - "+pin+"%0A%0A";
 
-let total = 0;
+message+="📦 Products:%0A";
 
 cart.forEach(item=>{
 
-let qty = item.qty || 1;
+let qty=item.qty||1;
 
-let price = parseInt(item.price.replace(/[^\d]/g,""));
+let price=parseInt(item.price.replace(/[^\d]/g,""));
 
-total += price * qty;
+total+=price*qty;
 
-message += "• " + item.name + " × " + qty + " = ₹" + (price*qty) + "%0A";
+message+="• "+item.name+" × "+qty+" = ₹"+(price*qty)+"%0A";
 
 });
 
-message += "%0A💰 Total : ₹" + total;
-
-const whatsappNumber = "919695243488";
+message+="%0A💰 Total: ₹"+total;
 
 window.open(
-"https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(decodeURIComponent(message)),
+"https://wa.me/919695243488?text="+message,
 "_blank"
 );
 
 });
+
+</script>
