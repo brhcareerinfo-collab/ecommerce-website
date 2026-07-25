@@ -402,3 +402,67 @@ text-align:left;
 }
 
 }
+/* ==========================
+   Footer
+========================== */
+
+.footer{
+background:#198754;
+padding:15px 20px;
+color:#fff;
+margin-top:30px;
+}
+
+.footer-container{
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+gap:10px;
+max-width:1200px;
+margin:auto;
+}
+
+.footer-left,
+.footer-right{
+font-size:15px;
+font-weight:500;
+}
+
+.whatsapp-link{
+display:inline-block;
+background:#25D366;
+color:#fff;
+text-decoration:none;
+padding:10px 18px;
+border-radius:30px;
+font-weight:bold;
+transition:.3s;
+box-shadow:0 4px 10px rgba(0,0,0,.15);
+}
+
+.whatsapp-link:hover{
+background:#1fa851;
+transform:translateY(-2px);
+}
+
+@media(max-width:768px){
+
+.footer-container{
+flex-direction:column;
+text-align:center;
+}
+
+.footer-left{
+order:2;
+}
+
+.footer-right{
+order:1;
+}
+
+.whatsapp-link{
+width:220px;
+}
+
+}
