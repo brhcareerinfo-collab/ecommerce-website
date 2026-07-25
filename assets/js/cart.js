@@ -4,7 +4,10 @@ const cartItems = document.getElementById("cart-items");
 
 if(cart.length === 0){
 
-cartItems.innerHTML = "<h2 style='text-align:center'>🛒 Cart Empty</h2>";
+cartItems.innerHTML = `
+<h2 style="text-align:center;margin-top:40px;">🛒 आपका Cart खाली है</h2>
+<p style="text-align:center;">पहले कुछ Products Add करें।</p>
+`;
 
 }else{
 
@@ -20,24 +23,33 @@ total += price * qty;
 
 cartItems.innerHTML += `
 
-<div class="product-card">
+<div class="cart-item">
 
 <img src="${item.image}" alt="${item.name}">
 
+<div class="cart-info">
+
 <h3>${item.name}</h3>
 
-<p>${item.price}</p>
+<p class="cart-price">${item.price}</p>
 
-<div style="margin:10px 0;">
-Qty :
-<button onclick="changeQty(${index},-1)">-</button>
+<div class="qty-box">
 
-<span id="qty-${index}">${qty}</span>
+<button onclick="changeQty(${index},-1)">−</button>
+
+<span>${qty}</span>
 
 <button onclick="changeQty(${index},1)">+</button>
+
 </div>
 
-<button onclick="removeItem(${index})">❌ Remove</button>
+<button class="remove-btn" onclick="removeItem(${index})">
+
+🗑 Remove
+
+</button>
+
+</div>
 
 </div>
 
@@ -47,9 +59,17 @@ Qty :
 
 cartItems.innerHTML += `
 
-<h2 style="text-align:center;margin-top:20px;">
-Total : ₹${total}
-</h2>
+<div class="total-box">
+
+<h2>Total : ₹${total}</h2>
+
+<a href="#" class="checkout-btn">
+
+Proceed to Checkout
+
+</a>
+
+</div>
 
 `;
 
