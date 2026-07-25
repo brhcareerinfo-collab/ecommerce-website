@@ -112,3 +112,44 @@ product.style.display="none";
 });
 
 console.log("GaonFresh Loaded Successfully");
+// ===============================
+// Product Popup
+// ===============================
+
+const modal = document.getElementById("productModal");
+const modalImage = document.getElementById("modalImage");
+const modalTitle = document.getElementById("modalTitle");
+const modalPrice = document.getElementById("modalPrice");
+const closeModal = document.getElementById("closeModal");
+
+document.addEventListener("click", function(e){
+
+const card = e.target.closest(".product-card");
+
+if(card){
+
+modalImage.src = card.querySelector("img").src;
+modalTitle.innerText = card.querySelector("h3").innerText;
+modalPrice.innerText = card.querySelector("p").innerText;
+
+modal.style.display = "block";
+
+}
+
+});
+
+closeModal.onclick = function(){
+
+modal.style.display = "none";
+
+}
+
+window.onclick = function(e){
+
+if(e.target == modal){
+
+modal.style.display = "none";
+
+}
+
+}
