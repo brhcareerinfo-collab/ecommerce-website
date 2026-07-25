@@ -1,48 +1,162 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout - GaonFresh</title>
+
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#f5f5f5;
+margin:0;
+padding:0;
+}
+
+.container{
+max-width:500px;
+margin:30px auto;
+background:#fff;
+padding:20px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,.1);
+}
+
+h2{
+text-align:center;
+color:green;
+}
+
+input,textarea{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:1px solid #ccc;
+border-radius:6px;
+box-sizing:border-box;
+}
+
+.payment{
+margin:15px 0;
+}
+
+button{
+width:100%;
+padding:14px;
+background:green;
+color:#fff;
+font-size:18px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+button:hover{
+background:#0b7a0b;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h2>🛒 Checkout</h2>
+
+<form id="checkoutForm">
+
+<input type="text" placeholder="पूरा नाम" required>
+
+<input type="tel" placeholder="मोबाइल नंबर" required>
+
+<textarea placeholder="पूरा पता" required></textarea>
+
+<input type="text" placeholder="शहर" required>
+
+<input type="text" placeholder="पिनकोड" required>
+
+<div class="payment">
+
+<h3>Payment Method</h3>
+
+<label>
+<input type="radio" name="payment" value="COD" checked>
+Cash on Delivery
+</label>
+
+<br><br>
+
+<label>
+<input type="radio" name="payment" value="UPI">
+Online UPI Payment
+</label>
+
+</div>
+
+<button type="submit">
+Place Order
+</button>
+
+</form>
+
+</div>
+
 <script>
-document.getElementById("checkoutForm").addEventListener("submit", function(e){
 
-    e.preventDefault();
+document.getElementById("checkoutForm").addEventListener("submit",function(e){
 
-    const name = document.querySelector('input[placeholder="पूरा नाम"]').value;
-    const mobile = document.querySelector('input[placeholder="मोबाइल नंबर"]').value;
-    const address = document.querySelector("textarea").value;
-    const city = document.querySelector('input[placeholder="शहर"]').value;
-    const pin = document.querySelector('input[placeholder="पिनकोड"]').value;
+e.preventDefault();
 
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+const name=document.querySelector('input[placeholder="पूरा नाम"]').value;
+const mobile=document.querySelector('input[placeholder="मोबाइल नंबर"]').value;
+const address=document.querySelector("textarea").value;
+const city=document.querySelector('input[placeholder="शहर"]').value;
+const pin=document.querySelector('input[placeholder="पिनकोड"]').value;
 
-    if(cart.length === 0){
-        alert("आपका Cart खाली है।");
-        return;
-    }
+const payment=document.querySelector('input[name="payment"]:checked').value;
 
-    let total = 0;
+let cart=JSON.parse(localStorage.getItem("cart"))||[];
 
-    let message = `🛒 GaonFresh New Order
+if(cart.length==0){
 
-👤 Name: ${name}
-📱 Mobile: ${mobile}
-📍 Address: ${address}, ${city} - ${pin}
+alert("Cart खाली है");
 
-📦 Products:
-`;
+return;
 
-    cart.forEach(item => {
+}
 
-        let qty = item.qty || 1;
-        let price = parseInt(item.price.replace(/[^\d]/g,""));
+let total=0;
 
-        total += qty * price;
+let message="🛒 GaonFresh Order\n\n";
 
-        message += `• ${item.name} × ${qty} = ₹${price * qty}\n`;
+message+="👤 Name : "+name+"\n";
+message+="📱 Mobile : "+mobile+"\n";
+message+="📍 Address : "+address+", "+city+"-"+pin+"\n";
+message+="💳 Payment : "+payment+"\n\n";
 
-    });
+message+="Products:\n";
 
-    message += `\n💰 Total: ₹${total}`;
+cart.forEach(item=>{
 
-    const url = "https://wa.me/919695243488?text=" + encodeURIComponent(message);
+let qty=item.qty||1;
 
-    window.location.href = url;
+let price=parseInt(item.price.replace(/[^\d]/g,""));
+
+total+=price*qty;
+
+message+="• "+item.name+" x "+qty+" = ₹"+(price*qty)+"\n";
 
 });
+
+message+="\nTotal = ₹"+total;
+
+const url="https://wa.me/919695243488?text="+encodeURIComponent(message);
+
+window.location.href=url;
+
+});
+
 </script>
+
+</body>
+</html>
