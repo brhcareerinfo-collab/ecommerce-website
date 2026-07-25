@@ -14,3 +14,24 @@ buttons.forEach((button) => {
 });
 
 console.log("GaonFresh Started Successfully");
+// ===== Banner Slider =====
+
+const banners = [
+"assets/images/banner1.jpg",
+"assets/images/banner2.jpg",
+"assets/images/banner3.jpg"
+];
+
+let current = 0;
+
+setInterval(()=>{
+
+current++;
+
+if(current>=banners.length){
+current=0;
+}
+
+document.getElementById("sliderImage").src=banners[current];
+
+},3000);
