@@ -31,3 +31,32 @@ color:white;
 text-decoration:none;
 margin-left:15px;
 }
+.hero{
+    height:300px;
+    background:linear-gradient(135deg,#4CAF50,#2E7D32);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+}
+
+.hero h1{
+    font-size:32px;
+    margin-bottom:10px;
+}
+
+.hero p{
+    font-size:18px;
+    margin-bottom:20px;
+}
+
+.hero button{
+    padding:12px 25px;
+    border:none;
+    background:#fff;
+    color:#2E7D32;
+    border-radius:6px;
+    font-size:16px;
+    cursor:pointer;
+}
