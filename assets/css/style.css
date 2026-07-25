@@ -466,3 +466,8 @@ width:220px;
 }
 
 }
+.category-link{
+text-decoration:none;
+color:inherit;
+display:block;
+}
