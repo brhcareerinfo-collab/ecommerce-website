@@ -174,3 +174,8 @@ margin-left:15px;
     object-fit:cover;
     border-radius:10px;
 }
+@media(max-width:768px){
+
+.slider img{
+    height:180px;
+}
