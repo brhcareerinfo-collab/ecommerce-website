@@ -1,25 +1,24 @@
 <script>
-
 document.getElementById("checkoutForm").addEventListener("submit", function(e){
 
-e.preventDefault();
+    e.preventDefault();
 
-const name = document.querySelector('input[placeholder="पूरा नाम"]').value;
-const mobile = document.querySelector('input[placeholder="मोबाइल नंबर"]').value;
-const address = document.querySelector("textarea").value;
-const city = document.querySelector('input[placeholder="शहर"]').value;
-const pin = document.querySelector('input[placeholder="पिनकोड"]').value;
+    const name = document.querySelector('input[placeholder="पूरा नाम"]').value;
+    const mobile = document.querySelector('input[placeholder="मोबाइल नंबर"]').value;
+    const address = document.querySelector("textarea").value;
+    const city = document.querySelector('input[placeholder="शहर"]').value;
+    const pin = document.querySelector('input[placeholder="पिनकोड"]').value;
 
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-if(cart.length === 0){
-    alert("आपका Cart खाली है।");
-    return;
-}
+    if(cart.length === 0){
+        alert("आपका Cart खाली है।");
+        return;
+    }
 
-let total = 0;
+    let total = 0;
 
-let message = `🛒 GaonFresh New Order
+    let message = `🛒 GaonFresh New Order
 
 👤 Name: ${name}
 📱 Mobile: ${mobile}
@@ -28,23 +27,22 @@ let message = `🛒 GaonFresh New Order
 📦 Products:
 `;
 
-cart.forEach(item => {
+    cart.forEach(item => {
 
-let qty = item.qty || 1;
-let price = parseInt(item.price.replace(/[^\d]/g,""));
+        let qty = item.qty || 1;
+        let price = parseInt(item.price.replace(/[^\d]/g,""));
 
-total += qty * price;
+        total += qty * price;
 
-message += `• ${item.name} × ${qty} = ₹${price * qty}\n`;
+        message += `• ${item.name} × ${qty} = ₹${price * qty}\n`;
+
+    });
+
+    message += `\n💰 Total: ₹${total}`;
+
+    const url = "https://wa.me/919695243488?text=" + encodeURIComponent(message);
+
+    window.location.href = url;
 
 });
-
-message += `\n💰 Total: ₹${total}`;
-
-const url = "https://wa.me/919695243488?text=" + encodeURIComponent(message);
-
-window.location.href = url;
-
-});
-
 </script>
