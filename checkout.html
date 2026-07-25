@@ -1,60 +1,50 @@
 <script>
 
-document.getElementById("checkoutForm").addEventListener("submit",function(e){
+document.getElementById("checkoutForm").addEventListener("submit", function(e){
 
 e.preventDefault();
 
-const name=document.querySelector('input[placeholder="पूरा नाम"]').value;
-const mobile=document.querySelector('input[placeholder="मोबाइल नंबर"]').value;
-const address=document.querySelector("textarea").value;
-const city=document.querySelector('input[placeholder="शहर"]').value;
-const pin=document.querySelector('input[placeholder="पिनकोड"]').value;
+const name = document.querySelector('input[placeholder="पूरा नाम"]').value;
+const mobile = document.querySelector('input[placeholder="मोबाइल नंबर"]').value;
+const address = document.querySelector("textarea").value;
+const city = document.querySelector('input[placeholder="शहर"]').value;
+const pin = document.querySelector('input[placeholder="पिनकोड"]').value;
 
-let cart=JSON.parse(localStorage.getItem("cart"))||[];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-if(cart.length===0){
-
-alert("आपका Cart खाली है।");
-
-return;
-
+if(cart.length === 0){
+    alert("आपका Cart खाली है।");
+    return;
 }
 
-let total=0;
+let total = 0;
 
-let message="🛒 *GaonFresh New Order*%0A%0A";
+let message = `🛒 GaonFresh New Order
 
-message+="👤 Name: "+name+"%0A";
-message+="📱 Mobile: "+mobile+"%0A";
-message+="📍 Address: "+address+", "+city+" - "+pin+"%0A%0A";
+👤 Name: ${name}
+📱 Mobile: ${mobile}
+📍 Address: ${address}, ${city} - ${pin}
 
-message+="📦 Products:%0A";
+📦 Products:
+`;
 
-cart.forEach(item=>{
+cart.forEach(item => {
 
-let qty=item.qty||1;
+let qty = item.qty || 1;
+let price = parseInt(item.price.replace(/[^\d]/g,""));
 
-let price=parseInt(item.price.replace(/[^\d]/g,""));
+total += qty * price;
 
-total+=price*qty;
+message += `• ${item.name} × ${qty} = ₹${price * qty}\n`;
 
-message+="• "+item.name+" × "+qty+" = ₹"+(price*qty)+"%0A";
+});
+
+message += `\n💰 Total: ₹${total}`;
+
+const url = "https://wa.me/919695243488?text=" + encodeURIComponent(message);
+
+window.location.href = url;
 
 });
 
-message+="%0A💰 Total: ₹"+total;
-
-window.open(
-"https://wa.me/919695243488?text="+message,
-"_blank"
-);
-
-});
-<script>
-document.getElementById("checkoutForm").addEventListener("submit", function(e){
-    e.preventDefault();
-
-    window.open("https://wa.me/919695243488?text=Test", "_blank");
-});
-</script>
 </script>
