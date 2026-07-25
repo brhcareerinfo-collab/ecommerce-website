@@ -1,3 +1,5 @@
+alert("Cart JS Loaded");
+
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 const cartItems = document.getElementById("cart-items");
