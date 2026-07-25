@@ -95,7 +95,17 @@ qty:1
 
 };
 
+const existing = cart.find(item => item.name === product.name);
+
+if(existing){
+
+existing.qty = (existing.qty || 1) + 1;
+
+}else{
+
 cart.push(product);
+
+}
 
 localStorage.setItem("cart", JSON.stringify(cart));
 
