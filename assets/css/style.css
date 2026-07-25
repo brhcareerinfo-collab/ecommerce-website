@@ -184,7 +184,8 @@ margin-left:15px;
 .slider img{
     height:180px;
 }
-.modal{
+
+}   /* <-- यह } जोड़ना है */
 display:none;
 position:fixed;
 left:0;
