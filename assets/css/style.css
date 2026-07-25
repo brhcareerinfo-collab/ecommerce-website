@@ -99,13 +99,14 @@ margin-left:15px;
 
 .top-bar{
     background:#ff9800;
-    color:#fff;
+    color:#ffffff;
     text-align:center;
-    padding:8px;
-    font-size:14px;
-    font-weight:bold;
+    padding:12px 15px;
+    font-size:18px;
+    font-weight:700;
+    line-height:1.5;
+    letter-spacing:0.5px;
 }
-
 #cart-count{
     background:red;
     color:#fff;
