@@ -125,7 +125,23 @@ Place Order
 </div>
 
 <script>
+<script>
 
+function toggleUPI(){
+
+let payment=document.querySelector('input[name="payment"]:checked').value;
+
+if(payment==="UPI"){
+document.getElementById("upiBox").style.display="block";
+}else{
+document.getElementById("upiBox").style.display="none";
+}
+
+}
+
+document.getElementById("checkoutForm").addEventListener("submit", function(e){
+
+// बाकी आपका Code...
 document.getElementById("checkoutForm").addEventListener("submit",function(e){
 
 e.preventDefault();
