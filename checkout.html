@@ -153,7 +153,23 @@ const city=document.querySelector('input[placeholder="शहर"]').value;
 const pin=document.querySelector('input[placeholder="पिनकोड"]').value;
 
 const payment=document.querySelector('input[name="payment"]:checked').value;
+let paymentText = "COD (UNPAID)";
 
+if(payment === "UPI"){
+
+let txn = document.getElementById("txn").value.trim();
+
+if(txn === ""){
+
+alert("कृपया Transaction ID दर्ज करें");
+
+return;
+
+}
+
+paymentText = "PAID (UPI)\nTransaction ID : " + txn;
+
+}
 let cart=JSON.parse(localStorage.getItem("cart"))||[];
 
 if(cart.length==0){
@@ -171,8 +187,7 @@ let message="🛒 GaonFresh Order\n\n";
 message+="👤 Name : "+name+"\n";
 message+="📱 Mobile : "+mobile+"\n";
 message+="📍 Address : "+address+", "+city+"-"+pin+"\n";
-message+="💳 Payment : "+payment+"\n\n";
-
+message+="💳 Payment : "+paymentText+"\n\n";
 message+="Products:\n";
 
 cart.forEach(item=>{
