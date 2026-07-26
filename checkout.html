@@ -78,11 +78,34 @@ background:#0b7a0b;
 <div class="payment">
 
 <h3>Payment Method</h3>
+<h3>Payment Method</h3>
 
 <label>
-<input type="radio" name="payment" value="COD" checked>
+<input type="radio" name="payment" value="COD" checked onclick="toggleUPI()">
 Cash on Delivery
 </label>
+
+<br><br>
+
+<label>
+<input type="radio" name="payment" value="UPI" onclick="toggleUPI()">
+Online UPI Payment
+</label>
+
+<div id="upiBox" style="display:none; margin-top:20px; text-align:center;">
+
+<h3>UPI Payment</h3>
+
+<img src="assets/images/upi-qr.png" width="220">
+
+<p><b>UPI ID:</b> 9695243488@ibl</p>
+
+<input
+type="text"
+id="txn"
+placeholder="Transaction ID दर्ज करें">
+
+</div>
 
 <br><br>
 
