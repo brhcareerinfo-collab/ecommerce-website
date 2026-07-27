@@ -155,6 +155,8 @@ const modalTitle = document.getElementById("modalTitle");
 const modalPrice = document.getElementById("modalPrice");
 const closeModal = document.getElementById("closeModal");
 
+if(modal && closeModal){
+
 document.addEventListener("click", function(e){
 
 const card = e.target.closest(".product-card");
@@ -170,6 +172,18 @@ modal.style.display = "block";
 }
 
 });
+
+closeModal.onclick = function(){
+modal.style.display = "none";
+}
+
+window.onclick = function(e){
+if(e.target == modal){
+modal.style.display = "none";
+}
+}
+
+}
 
 closeModal.onclick = function(){
 
