@@ -139,9 +139,13 @@ message+="• "+item.name+" × "+qty+" = ₹"+(price*qty)+"\n";
 
 message+="\n💰 Total : ₹"+total;
 
-const whatsapp="https://wa.me/919695243488?text="+encodeURIComponent(message);
-localStorage.removeItem("cart");
-window.location.href=whatsapp;
+const whatsapp = "https://wa.me/919695243488?text=" + encodeURIComponent(message);
+
+// Cart खाली करो
+localStorage.setItem("cart", JSON.stringify([]));
+
+// WhatsApp खोलो
+window.location.href = whatsapp;
 
 });
 
