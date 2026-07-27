@@ -38,7 +38,7 @@ image:"assets/images/chana.jpg"
 
 // Show Products
 const productList = document.getElementById("product-list");
-
+console.log(productList);
 if (productList) {
 
 products.forEach(product => {
