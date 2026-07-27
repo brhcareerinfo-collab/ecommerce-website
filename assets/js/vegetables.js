@@ -1,4 +1,4 @@
-buttonnn vegetables = [
+const vegetables = [
 
 {
 name:"Potato",
@@ -52,11 +52,14 @@ productList.innerHTML += `
 
 <p>${product.price}</p>
 
-<button class="add-cart">Add to Cart</button>divdiv>
+<button class="add-cart">Add to Cart</button>
+
+</div>
 
 `;
 
 });
+
 let cart = 0;
 
 document.addEventListener("click", function(e){
