@@ -693,3 +693,10 @@ border-color:#ffd54f;
 .quick-links a:active{
 transform:scale(.96);
 }
+.quick-title{
+color:#fff;
+text-align:center;
+font-size:24px;
+font-weight:bold;
+margin:20px 0;
+}
