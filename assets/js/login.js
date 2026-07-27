@@ -34,12 +34,13 @@ window.recaptchaVerifier.render();
 // Send OTP
 document.getElementById("sendOtp").addEventListener("click", async () => {
 
+  alert("Button Clicked");
+
   const phone = document.getElementById("phone").value.trim();
 
-  if (!phone.startsWith("+91") || phone.length !== 13) {
-    alert("Mobile number +91XXXXXXXXXX format me likhiye.");
-    return;
-  }
+  alert(phone);
+
+});
 
   try {
 
