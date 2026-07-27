@@ -49,3 +49,33 @@ alert(err.message);
 }
 
 });
+import {
+  signInWithPhoneNumber,
+  RecaptchaVerifier,
+  getAuth
+} from "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
+
+document.getElementById("verifyOtp").addEventListener("click", async () => {
+
+  const code = document.getElementById("otp").value;
+
+  try{
+
+    const result = await window.confirmationResult.confirm(code);
+
+    const user = result.user;
+
+    localStorage.setItem("userPhone", user.phoneNumber);
+    localStorage.setItem("isLoggedIn","true");
+
+    alert("🎉 Login Successful");
+
+    window.location.href="index.html";
+
+  }catch(error){
+
+    alert("❌ गलत OTP");
+
+  }
+
+});
