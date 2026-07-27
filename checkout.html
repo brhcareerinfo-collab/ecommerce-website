@@ -78,10 +78,13 @@ background:#0b7a0b;
 <div class="payment">
 
 <h3>Payment Method</h3>
+
 <label>
-<input type="radio" name="payment" value="COD" checked onclick="toggleUPI()">
+<input type="radio" name="payment" value="COD" checked>
 Cash on Delivery
 </label>
+
+</div>
 
 <br><br>
 
@@ -120,7 +123,6 @@ Place Order
 </div>
 
 <script>
-<script>
 
 function toggleUPI(){
 
@@ -136,9 +138,11 @@ document.getElementById("upiBox").style.display="none";
 
 document.getElementById("checkoutForm").addEventListener("submit", function(e){
 
-// बाकी आपका Code...
-document.getElementById("checkoutForm").addEventListener("submit",function(e){
+e.preventDefault();
 
+// बाकी पूरा कोड...
+
+});
 e.preventDefault();
 
 const name=document.querySelector('input[placeholder="पूरा नाम"]').value;
