@@ -1,4 +1,7 @@
 alert("login.js Loaded");
+window.onerror = function(message, source, line, column, error){
+    alert(message + "\nLine: " + line);
+};
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
 
 import {
