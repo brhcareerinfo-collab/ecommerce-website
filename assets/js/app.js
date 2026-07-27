@@ -39,7 +39,9 @@ image:"assets/images/chana.jpg"
 // Show Products
 const productList = document.getElementById("product-list");
 
-products.forEach(product=>{
+if (productList) {
+
+products.forEach(product => {
 
 productList.innerHTML += `
 <div class="product-card">
@@ -51,6 +53,8 @@ productList.innerHTML += `
 `;
 
 });
+
+}
 
 // Banner Slider
 const banners = [
