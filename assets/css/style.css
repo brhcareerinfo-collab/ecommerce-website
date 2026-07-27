@@ -700,3 +700,76 @@ font-size:24px;
 font-weight:bold;
 margin:20px 0;
 }
+/* ===== Static Pages ===== */
+
+body{
+background:#f5f7fa;
+font-family:Arial,sans-serif;
+}
+
+.container{
+max-width:1000px;
+margin:30px auto;
+padding:25px;
+background:#ffffff;
+border-radius:15px;
+box-shadow:0 6px 20px rgba(0,0,0,.08);
+}
+
+.container h1{
+font-size:34px;
+text-align:center;
+color:#198754;
+margin-bottom:25px;
+}
+
+.container h2{
+font-size:24px;
+color:#198754;
+margin:20px 0 10px;
+padding-bottom:8px;
+border-bottom:2px solid #e8e8e8;
+}
+
+.container p,
+.container li{
+font-size:17px;
+line-height:1.8;
+color:#444;
+}
+
+.info-box{
+background:#f8f9fa;
+border-left:5px solid #198754;
+padding:18px;
+margin:18px 0;
+border-radius:10px;
+}
+
+.contact-box{
+background:#198754;
+color:#fff;
+padding:20px;
+border-radius:10px;
+margin:20px 0;
+}
+
+.contact-box h2,
+.contact-box p{
+color:#fff;
+}
+
+.back-btn{
+display:inline-block;
+background:#198754;
+color:#fff;
+padding:12px 24px;
+border-radius:8px;
+text-decoration:none;
+font-weight:bold;
+margin-top:20px;
+}
+
+.back-btn:hover{
+background:#146c43;
+}
