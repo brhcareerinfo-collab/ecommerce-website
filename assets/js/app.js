@@ -125,26 +125,25 @@ alert(product.name + " Cart में जोड़ दिया गया।");
 document.getElementById("cart-count").innerText = cart.length;
 
 // Search
-const searchInput=document.getElementById("searchInput");
+const searchInput = document.getElementById("searchInput");
 
-searchInput.addEventListener("keyup",()=>{
+if (searchInput) {
 
-const value=searchInput.value.toLowerCase();
+searchInput.addEventListener("keyup", () => {
 
-document.querySelectorAll(".product-card").forEach(product=>{
+const value = searchInput.value.toLowerCase();
 
-const name=product.querySelector("h3").innerText.toLowerCase();
+document.querySelectorAll(".product-card").forEach(product => {
 
-if(name.includes(value)){
-product.style.display="block";
-}else{
-product.style.display="none";
+const name = product.querySelector("h3").innerText.toLowerCase();
+
+product.style.display = name.includes(value) ? "" : "none";
+
+});
+
+});
+
 }
-
-});
-
-});
-
 console.log("GaonFresh Loaded Successfully");
 // ===============================
 // Product Popup
