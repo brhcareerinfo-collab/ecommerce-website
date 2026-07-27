@@ -1,11 +1,12 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
 
 import {
-getAuth,
-RecaptchaVerifier,
-signInWithPhoneNumber
+  getAuth,
+  RecaptchaVerifier,
+  signInWithPhoneNumber
 } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
 
+// Firebase Config
 const firebaseConfig = {
   apiKey: "AIzaSyBJy1CZlPQy6cxbg7ICW_HmbJ5p_zNEoyk",
   authDomain: "gaonfresh-86378.firebaseapp.com",
@@ -15,66 +16,69 @@ const firebaseConfig = {
   appId: "1:453075606995:web:6b2cdf65ac8944d7022326"
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
+// reCAPTCHA
 window.recaptchaVerifier = new RecaptchaVerifier(auth, "recaptcha-container", {
   size: "normal"
 });
 
-const appVerifier = window.recaptchaVerifier;
+window.recaptchaVerifier.render();
 
+// Send OTP
 document.getElementById("sendOtp").addEventListener("click", async () => {
 
-const phone = document.getElementById("phone").value;
+  const phone = document.getElementById("phone").value.trim();
 
-try{
+  if (!phone.startsWith("+91") || phone.length !== 13) {
+    alert("Mobile number +91XXXXXXXXXX format me likhiye.");
+    return;
+  }
 
-const confirmationResult = await signInWithPhoneNumber(
-auth,
-phone,
-appVerifier
-);
+  try {
 
-window.confirmationResult = confirmationResult;
+    const confirmationResult = await signInWithPhoneNumber(
+      auth,
+      phone,
+      window.recaptchaVerifier
+    );
 
-document.getElementById("otpSection").style.display="block";
+    window.confirmationResult = confirmationResult;
 
-alert("OTP भेज दिया गया।");
+    document.getElementById("otpSection").style.display = "block";
 
-}catch(err){
+    alert("OTP bhej diya gaya.");
 
-alert(err.message);
+  } catch (error) {
 
-}
+    alert(error.message);
+    console.log(error);
+
+  }
 
 });
-import {
-  signInWithPhoneNumber,
-  RecaptchaVerifier,
-  getAuth
-} from "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
 
+// Verify OTP
 document.getElementById("verifyOtp").addEventListener("click", async () => {
 
-  const code = document.getElementById("otp").value;
+  const code = document.getElementById("otp").value.trim();
 
-  try{
+  try {
 
     const result = await window.confirmationResult.confirm(code);
 
-    const user = result.user;
+    localStorage.setItem("isLoggedIn", "true");
+    localStorage.setItem("userPhone", result.user.phoneNumber);
 
-    localStorage.setItem("userPhone", user.phoneNumber);
-    localStorage.setItem("isLoggedIn","true");
+    alert("Login Successful");
 
-    alert("🎉 Login Successful");
+    window.location.href = "index.html";
 
-    window.location.href="index.html";
+  } catch (error) {
 
-  }catch(error){
-
-    alert("❌ गलत OTP");
+    alert("Wrong OTP");
 
   }
 
