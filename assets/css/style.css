@@ -634,3 +634,27 @@ height:140px;
 }
 
 }
+.quick-links{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px;
+margin:15px 0;
+text-align:center;
+}
+
+.quick-links a{
+display:block;
+padding:10px 6px;
+background:#ffffff;
+color:#198754;
+font-weight:bold;
+text-decoration:none;
+border-radius:8px;
+font-size:14px;
+transition:.3s;
+}
+
+.quick-links a:hover{
+background:#198754;
+color:#fff;
+}
