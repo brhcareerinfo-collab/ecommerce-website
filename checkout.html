@@ -8,10 +8,10 @@
 <style>
 
 body{
-font-family:Arial,sans-serif;
-background:#f5f5f5;
 margin:0;
 padding:0;
+font-family:Arial,sans-serif;
+background:#f4f4f4;
 }
 
 .container{
@@ -26,32 +26,26 @@ box-shadow:0 0 10px rgba(0,0,0,.1);
 h2{
 text-align:center;
 color:green;
-margin-bottom:20px;
 }
 
-input,
-textarea{
+input,textarea{
 width:100%;
 padding:12px;
 margin:10px 0;
 border:1px solid #ccc;
-border-radius:6px;
+border-radius:5px;
 box-sizing:border-box;
 font-size:16px;
 }
 
-.payment{
-margin:15px 0;
-}
-
 button{
 width:100%;
-padding:14px;
+padding:15px;
 background:green;
-color:#fff;
+color:white;
 font-size:18px;
 border:none;
-border-radius:6px;
+border-radius:5px;
 cursor:pointer;
 }
 
@@ -71,98 +65,83 @@ background:#0b7a0b;
 
 <form id="checkoutForm">
 
-<input
-type="text"
-placeholder="पूरा नाम"
-required>
+<input type="text" placeholder="पूरा नाम" required>
 
-<input
-type="tel"
-placeholder="मोबाइल नंबर"
-required>
+<input type="tel" placeholder="मोबाइल नंबर" required>
 
-<textarea
-placeholder="पूरा पता"
-required></textarea>
+<textarea placeholder="पूरा पता" required></textarea>
 
-<input
-type="text"
-placeholder="शहर"
-required>
+<input type="text" placeholder="शहर" required>
 
-<input
-type="text"
-placeholder="पिनकोड"
-required>UPIPI
-</div>
-
-<script>
-  <div class="payment">
+<input type="text" placeholder="पिनकोड" required>
 
 <h3>Payment Method</h3>
 
 <label>
-<input type="radio" name="payment" value="COD" checked>
+<input type="radio" checked>
 Cash on Delivery
 </label>
 
-</div>
+<br><br>
 
 <button type="submit">
-🛒 Place Order
+Place Order
 </button>
 
 </form>
 
 </div>
-  <script>
 
-document.getElementById("checkoutForm").addEventListener("submit", function(e){
+<script>
+
+document.getElementById("checkoutForm").addEventListener("submit",function(e){
 
 e.preventDefault();
 
-const name = document.querySelector('input[placeholder="पूरा नाम"]').value;
-const mobile = document.querySelector('input[placeholder="मोबाइल नंबर"]').value;
-const address = document.querySelector("textarea").value;
-const city = document.querySelector('input[placeholder="शहर"]').value;
-const pin = document.querySelector('input[placeholder="पिनकोड"]').value;
+const name=document.querySelector('input[placeholder="पूरा नाम"]').value;
+const mobile=document.querySelector('input[placeholder="मोबाइल नंबर"]').value;
+const address=document.querySelector("textarea").value;
+const city=document.querySelector('input[placeholder="शहर"]').value;
+const pin=document.querySelector('input[placeholder="पिनकोड"]').value;
 
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let cart=JSON.parse(localStorage.getItem("cart"))||[];
 
 if(cart.length===0){
-alert("आपका Cart खाली है।");
+
+alert("आपका Cart खाली है");
+
 return;
+
 }
 
-let total = 0;
+let total=0;
 
-let message = "🛒 *GaonFresh New Order*\n\n";
+let message="🛒 GaonFresh Order\n\n";
 
-message += "👤 Name : " + name + "\n";
-message += "📱 Mobile : " + mobile + "\n";
-message += "📍 Address : " + address + ", " + city + " - " + pin + "\n";
-message += "💳 Payment : Cash on Delivery\n\n";
+message+="👤 Name : "+name+"\n";
+message+="📱 Mobile : "+mobile+"\n";
+message+="📍 Address : "+address+", "+city+" - "+pin+"\n";
+message+="💳 Payment : Cash on Delivery\n\n";
 
-message += "📦 Products:\n";
+message+="📦 Products\n";
 
-cart.forEach(item=>{
+cart.forEach(function(item){
 
-let qty = item.qty || 1;
+let qty=item.qty||1;
 
-let price = parseInt(item.price.replace(/[^\d]/g,""));
+let price=parseInt(item.price.replace(/[^\d]/g,""));
 
-total += price * qty;
+total+=price*qty;
 
-message += "• " + item.name + " × " + qty + " = ₹" + (price*qty) + "\n";
+message+="• "+item.name+" × "+qty+" = ₹"+(price*qty)+"\n";
 
 });
 
-message += "\n💰 Total : ₹" + total;
+message+="\n💰 Total : ₹"+total;
 
-const whatsappURL =
-"https://wa.me/919695243488?text=" + encodeURIComponent(message);
+const whatsapp="https://wa.me/919695243488?text="+encodeURIComponent(message);
 
-window.location.href = whatsappURL;
+window.location.href=whatsapp;
 
 });
 
